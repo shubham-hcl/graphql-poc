@@ -1,5 +1,4 @@
 import Header from "../Header/Header";
-import "./ProductList.module.scss";
 
 function ProductList() {
   return (

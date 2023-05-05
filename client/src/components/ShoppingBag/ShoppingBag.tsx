@@ -1,4 +1,3 @@
-import "./ShoppingBag.module.scss";
 import Header from "../Header/Header";
 
 export default function ShoppingBag() {
