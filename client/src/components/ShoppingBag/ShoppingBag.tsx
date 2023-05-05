@@ -1,7 +1,6 @@
-import Header from "../Header/Header";
+import Header from '../Header/Header'
 
 export default function ShoppingBag() {
-  
   return (
     <div>
       <Header />
@@ -11,5 +10,5 @@ export default function ShoppingBag() {
         </div>
       </div>
     </div>
-  );
+  )
 }

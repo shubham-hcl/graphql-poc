@@ -1,4 +1,4 @@
-import Header from "../Header/Header";
+import Header from '../Header/Header'
 
 function ProductList() {
   return (
@@ -6,6 +6,6 @@ function ProductList() {
       <Header />
       <div>Product List Page</div>
     </div>
-  );
+  )
 }
-export default ProductList;
+export default ProductList

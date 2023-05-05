@@ -3,6 +3,6 @@ function Authentication() {
     <div>
       <h1> This is Login Page</h1>
     </div>
-  );
+  )
 }
-export default Authentication;
+export default Authentication
