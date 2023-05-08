@@ -2,8 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import { createHandler } from 'graphql-http/lib/use/express';
 import expressPlayground from 'graphql-playground-middleware-express';
-import schema from './graphql/graphql-schema';
-import resolvers from './graphql/graphql-resolver';
+import schema from './graphql/schema';
+import resolvers from './graphql/resolvers';
 import mongoose from 'mongoose';
 
 // Create an express server and a GraphQL endpoint
