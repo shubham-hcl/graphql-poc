@@ -1,8 +1,7 @@
 import Product from "../../../model/Product";
 
 const productMutations = {
-  createProduct: async ({ productInput }: any) => {
-    console.log(productInput);
+  createProduct: async (parent: any, { productInput }: any, context: any) => {
     const product = new Product(productInput);
     const createProduct: any = await product.save();
     return {
@@ -11,7 +10,11 @@ const productMutations = {
     };
   },
 
-  updateProduct: async ({ id, productInput }: any) => {
+  updateProduct: async (
+    parent: any,
+    { id, productInput }: any,
+    context: any
+  ) => {
     const product = await Product.findById(id);
     if (!product) {
       throw new Error("Product Not found!");
@@ -30,7 +33,7 @@ const productMutations = {
     };
   },
 
-  deleteProduct: async ({ id }: any) => {
+  deleteProduct: async (parent: any, { id }: any, context: any) => {
     const product: any = await Product.findById(id);
     if (!product) {
       throw new Error("Product Not found!");

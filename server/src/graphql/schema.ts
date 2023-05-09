@@ -1,7 +1,7 @@
-import { buildSchema } from "graphql";
+//import { buildSchema } from "graphql";
 
 // GraphQL schema
-const schema = buildSchema(`
+const schema = `#graphql
     type Query {
         users(id: ID): [User!]!
         products: [Product!]!
@@ -37,6 +37,6 @@ const schema = buildSchema(`
         price: Float!
         image: String!
     }
-`);
+`;
 
 export default schema;
