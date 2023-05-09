@@ -1,10 +1,11 @@
-import './App.scss'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
-import ProductList from './components/ProductList'
-import ShoppingBag from './components/ShoppingBag'
-import Authentication from './components/Authentication'
-import Home from './components/Home'
+import './App.scss';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import ShoppingBag from './components/ShoppingBag';
+import Authentication from './components/Authentication';
+import Home from './components/Home';
+import AuthProvider from './utils/AuthProvider';
+import ProductDetail from './components/ProductDetail';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
@@ -16,10 +17,24 @@ export default function App() {
     <ApolloProvider client={client}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/products"
+            element={
+              <AuthProvider>
+                <Home />
+              </AuthProvider>
+            }
+          />
           <Route path="login" element={<Authentication />} />
-          <Route path="bag" element={<ShoppingBag />} />
-          <Route path="products" element={<ProductList />} />
+          <Route
+            path="bag"
+            element={
+              <AuthProvider>
+                <ShoppingBag />
+              </AuthProvider>
+            }
+          />
+          <Route path="products/:productId" element={<ProductDetail />} />
         </Routes>
       </BrowserRouter>
     </ApolloProvider>
