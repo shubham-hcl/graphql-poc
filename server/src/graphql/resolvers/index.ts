@@ -1,21 +1,17 @@
 import { userMutations, userQueries } from "./user";
 import { productMutations, productQueries } from "./product";
-
-// const resolvers = {
-//   ...userQueries,
-//   ...productQueries,
-//   ...userMutations,
-//   ...productMutations,
-// };
+import { cartMutations, cartQueries } from "./cart";
 
 const resolvers = {
   Query: {
     ...userQueries,
     ...productQueries,
+    ...cartQueries,
   },
   Mutation: {
     ...userMutations,
     ...productMutations,
+    ...cartMutations,
   }
 };
 

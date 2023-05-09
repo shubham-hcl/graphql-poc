@@ -1,17 +1,18 @@
-//import { buildSchema } from "graphql";
-
 // GraphQL schema
 const schema = `#graphql
     type Query {
         users(id: ID): [User!]!
         products: [Product!]!
+        product(id: ID!): Product!
+        cart(cartId: ID!): Cart
     },
     type Mutation {
         login(email: String!, password: String!): Login!
-        createUser(name: String!, email: String!, password: String!): User!
+        createUser(username: String!, email: String!, password: String!): User!
         createProduct(productInput:ProductInputData): Product!
         updateProduct(id: ID!, productInput:ProductInputData): Product!
-        deleteProduct(id: ID!): Product!
+        deleteProduct(id: ID!): Product! 
+        addProductToCart(cartId: String!, lineItem: LineItem!): Cart!
     },
     type Login {
         _id: ID!
@@ -19,7 +20,7 @@ const schema = `#graphql
         accessToken: String!
     }
     type Product {
-        _id:ID!
+        _id: ID!
         name: String!
         description: String!
         price: Float!
@@ -27,7 +28,7 @@ const schema = `#graphql
     }, 
     type User {
         _id: String!
-        name: String!
+        username: String!
         email: String!
         password: String
     },
@@ -36,6 +37,26 @@ const schema = `#graphql
         description: String!
         price: Float!
         image: String!
+    }
+    type Cart {
+        cartId: ID!,
+        lineItems: [cartItem!]!
+    }
+    type cartItem {
+        productId: ID!,
+        name: String!,
+        description: String!,
+        price: Float!
+        image: String
+        quantity: Int!
+    }
+    input LineItem {
+        productId: ID!,
+        name: String!,
+        description: String!,
+        price: Float!
+        image: String
+        quantity: Int!
     }
 `;
 

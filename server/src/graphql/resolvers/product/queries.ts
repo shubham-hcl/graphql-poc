@@ -11,6 +11,10 @@ const productQueries = {
     });
     return products;
   },
+  product: async (parent: any, { id }: any, context: any) => {
+    let products: any = await Product.findById(id);
+    return products;
+  },
 };
 
 export default productQueries;

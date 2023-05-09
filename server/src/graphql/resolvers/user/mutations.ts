@@ -6,7 +6,7 @@ const userMutations = {
   createUser: async (parent: any, args: any, context: any) => {
     let securePassword = await bcrypt.hash(args.password, 12);
     const user = new User({
-      name: args.name,
+      username: args.username,
       email: args.email,
       password: securePassword,
     });
