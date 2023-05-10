@@ -1,11 +1,11 @@
 import Header from '../Header/Header'
 
-function ProductList() {
+function ProductDetail() {
   return (
     <div>
       <Header />
-      <div>Product List Page</div>
+      <div>Product Detail Page</div>
     </div>
   )
 }
-export default ProductList
+export default ProductDetail

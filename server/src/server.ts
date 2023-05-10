@@ -1,33 +1,37 @@
-import express from 'express';
-import cors from 'cors';
-import { createHandler } from 'graphql-http/lib/use/express';
-import expressPlayground from 'graphql-playground-middleware-express';
-import schema from './graphql/graphql-schema';
-import resolvers from './graphql/graphql-resolver';
-import mongoose from 'mongoose';
+import express from "express";
+import cors from "cors";
+import schema from "./graphql/schema";
+import resolvers from "./graphql/resolvers";
+import mongoose from "mongoose";
+import { ApolloServer } from "@apollo/server";
+import validateUser from "./validateUser";
+import { expressMiddleware } from "@apollo/server/express4";
+import bodyParser from 'body-parser'
 
 // Create an express server and a GraphQL endpoint
 const app = express();
 
-app.use(cors())
+const server = new ApolloServer({
+  typeDefs: schema,
+  resolvers,
+  csrfPrevention: false,
+});
 
-// Create Graph QL Endpoint
-app.use('/graphql', createHandler({
-    schema: schema,
-    rootValue: resolvers
-}));
+const databaseUrl =
+  "mongodb+srv://shubhamkaushik90:x4V6PsSm2BzHbo96@graphqlcluster.yahfjz1.mongodb.net/?retryWrites=true&w=majority";
 
-app.use('/playground', expressPlayground({ endpoint: '/graphql' }));
+const startServer = async () => {
+  await mongoose.connect(databaseUrl);
+  await server.start();
+  app.use(
+    "/graphql",
+    cors(),
+    bodyParser.json(),
+    expressMiddleware(server, {
+      context: validateUser,
+    })
+  );
+  app.listen(4000, () => console.log("Server started on port 4000"));
+};
 
-const databaseUrl = "mongodb+srv://shubhamkaushik90:x4V6PsSm2BzHbo96@graphqlcluster.yahfjz1.mongodb.net/?retryWrites=true&w=majority";
-
-const start = async () => {
-    try {
-      await mongoose.connect(databaseUrl);
-      app.listen(4000, () => console.log("Server started on port 4000"));
-    } catch (error) {
-      console.error(error);
-      process.exit(1);
-    }
-  };
-start();
+startServer();
