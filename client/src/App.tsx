@@ -6,6 +6,7 @@ import Authentication from './components/Authentication';
 import Home from './components/Home';
 import AuthProvider from './utils/AuthProvider';
 import ProductDetail from './components/ProductDetail';
+import AppProvider from './providers/AppProvider'
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
@@ -15,6 +16,7 @@ const client = new ApolloClient({
 export default function App() {
   return (
     <ApolloProvider client={client}>
+       <AppProvider>
       <BrowserRouter>
         <Routes>
           <Route
@@ -37,6 +39,7 @@ export default function App() {
           <Route path="products/:productId" element={<ProductDetail />} />
         </Routes>
       </BrowserRouter>
+      </AppProvider>
     </ApolloProvider>
   )
 }
