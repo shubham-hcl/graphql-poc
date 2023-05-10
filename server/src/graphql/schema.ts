@@ -43,6 +43,7 @@ const schema = `#graphql
     type Cart {
         cartId: ID!,
         lineItems: [cartItem!]!
+        totalPrice: String!
     }
     type cartItem {
         productId: ID!,
