@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-
+import styles from './Header.module.scss';
 function ElevationScroll(props: any) {
   const { children, window } = props;
   // Note that you normally won't need to set the window ref as useScrollTrigger
@@ -44,8 +44,10 @@ ElevationScroll.propTypes = {
 
 const Header = (props: any) => {
   const links = [
-    { id: 1, route: 'About', url: 'https://blog.appseed.us/mui-react-coding-landing-page/' },
-    { id: 2, route: 'More Apps', url: 'https://appseed.us/apps/react' },
+    { id: 1, route: 'Home', url: '/' },
+    { id: 2, route: 'Products', url: '/products' },
+    { id: 3, route: 'My Bag', url: '/bag' },
+    { id: 4, route: 'Logout', url: '/login' },
   ];
 
   const [state, setState] = React.useState({
@@ -86,11 +88,11 @@ const Header = (props: any) => {
   return (
     <Box sx={{ marginBottom: '70px' }}>
       <ElevationScroll {...props}>
-        <AppBar color='primary'>
-          <Toolbar>
+        <AppBar  sx={{background: 'white'}}>
+          <Toolbar className={styles['header']}>
             <Link href="#" underline="none">
               <Typography variant="h5">
-                MUI Sample
+                GraphQL POC
               </Typography>
             </Link>
 
@@ -99,7 +101,7 @@ const Header = (props: any) => {
               <IconButton
                 size="large"
                 edge="end"
-                color="inherit"
+                color="primary"
                 aria-label="menu"
                 onClick={toggleDrawer('right', true)}
               >
@@ -122,7 +124,7 @@ const Header = (props: any) => {
               }}
             >
               {links.map((link) => (
-                <Link href={link.url} target="_blank" underline="none" key={link.id}>
+                <Link component="a" href={link.url} underline="none" key={link.id}>
                   <Typography>{link.route}</Typography>
                 </Link>
               ))}
