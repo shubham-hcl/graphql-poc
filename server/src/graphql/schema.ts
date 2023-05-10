@@ -20,9 +20,10 @@ const schema = `#graphql
         accessToken: String!
     }
     type Product {
-        _id: ID!
+        productId: ID!
         name: String!
         description: String!
+        thumbnail: String!
         price: Float!
         image: String!
     }, 
@@ -36,6 +37,7 @@ const schema = `#graphql
         name: String!
         description: String!
         price: Float!
+        thumbnail: String!
         image: String!
     }
     type Cart {
@@ -47,6 +49,7 @@ const schema = `#graphql
         name: String!,
         description: String!,
         price: Float!
+        thumbnail: String!
         image: String
         quantity: Int!
     }
@@ -55,6 +58,7 @@ const schema = `#graphql
         name: String!,
         description: String!,
         price: Float!
+        thumbnail: String!
         image: String
         quantity: Int!
     }

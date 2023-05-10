@@ -1,8 +1,17 @@
 import Product from "../../../model/Product";
+import { v4 as uuidv4 } from "uuid";
 
 const productMutations = {
   createProduct: async (parent: any, { productInput }: any, context: any) => {
-    const product = new Product(productInput);
+    const { name, description, price, thumbnail, image } = productInput;
+    const product = new Product({
+      productId: uuidv4(),
+      name,
+      description,
+      price,
+      thumbnail,
+      image,
+    });
     const createProduct: any = await product.save();
     return {
       ...createProduct._doc,
@@ -40,8 +49,7 @@ const productMutations = {
     }
     await Product.findByIdAndRemove(id);
     return {
-      ...product._doc,
-      _id: product._id.toString(),
+      ...product._doc
     };
   },
 };

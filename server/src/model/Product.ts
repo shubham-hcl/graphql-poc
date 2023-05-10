@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 const productSchema = new Schema(
   {
+    productId: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -14,10 +18,9 @@ const productSchema = new Schema(
       type: Number,
       required: true,
     },
-    quantity: {
-      type: Number,
+    thumbnail: {
+      type: String,
       required: true,
-      min: [1, "Quantity can not be less then 1."],
     },
     image: {
       type: String,

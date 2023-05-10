@@ -20,6 +20,7 @@
     "graphql-playground-middleware-express": "^1.7.23",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.1.0",
+    "uuid": "^9.0.0",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
