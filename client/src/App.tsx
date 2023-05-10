@@ -22,9 +22,9 @@ export default function App() {
           <Route
             path="/products"
             element={
-              <AuthProvider>
+              // <AuthProvider>
                 <Home />
-              </AuthProvider>
+              // </AuthProvider>
             }
           />
           <Route path="login" element={<Authentication />} />

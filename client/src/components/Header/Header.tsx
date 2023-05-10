@@ -13,6 +13,7 @@ import {
 import React from 'react';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import PropTypes from 'prop-types';
+import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -44,10 +45,10 @@ ElevationScroll.propTypes = {
 
 const Header = (props: any) => {
   const links = [
-    { id: 1, route: 'Home', url: '/' },
-    { id: 2, route: 'Products', url: '/products' },
+    { id: 1, route: 'Home', url: '/products' },
+    // { id: 2, route: 'Products', url: '/products' },
     { id: 3, route: 'My Bag', url: '/bag' },
-    { id: 4, route: 'Logout', url: '/login' },
+    // { id: 4, route: 'Logout', url: '/login' },
   ];
 
   const [state, setState] = React.useState({
@@ -120,7 +121,7 @@ const Header = (props: any) => {
               sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                flexGrow: '0.1',
+                flexGrow: '0.05',
               }}
             >
               {links.map((link) => (
@@ -128,6 +129,10 @@ const Header = (props: any) => {
                   <Typography>{link.route}</Typography>
                 </Link>
               ))}
+              <Link component="a" href={'/login'} underline="none">
+                  <LogoutIcon />
+                </Link>
+              
             </Box>}
            
           </Toolbar>
