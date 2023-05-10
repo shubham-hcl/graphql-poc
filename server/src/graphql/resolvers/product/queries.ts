@@ -11,9 +11,9 @@ const productQueries = {
     });
     return products;
   },
-  product: async (parent: any, { id }: any, context: any) => {
-    let products: any = await Product.findById(id);
-    return products;
+  product: async (parent: any, { productId }: any, context: any) => {
+    let product: any = await Product.findOne({ productId });
+    return product;
   },
 };
 
