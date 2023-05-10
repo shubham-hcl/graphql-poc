@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const userMutations = {
-  createUser: async (parent: any, args: any, context: any) => {
+  createUser: async (parent: any, args: any, context: any) => {  
     let securePassword = await bcrypt.hash(args.password, 12);
     const user = new User({
       username: args.username,
