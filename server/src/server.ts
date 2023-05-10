@@ -27,9 +27,7 @@ const startServer = async () => {
     "/graphql",
     cors(),
     bodyParser.json(),
-    expressMiddleware(server, {
-      context: validateUser,
-    })
+    expressMiddleware(server)
   );
   app.listen(4000, () => console.log("Server started on port 4000"));
 };
