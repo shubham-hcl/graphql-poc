@@ -1,13 +1,14 @@
 import { gql } from '@apollo/client'
 
 const GET_PRODUCT_DETAIL = gql`
-  query getAllProducts($productId: ID!) {
-    product(id: $productId) {
+  query getProduct($productId: ID!) {
+    product(productId: $productId) {
       productId
       name
       description
       price
       thumbnail
+      images
     }
   }
 `

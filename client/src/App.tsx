@@ -5,6 +5,7 @@ import ShoppingBag from './components/ShoppingBag'
 import Authentication from './components/Authentication'
 import Product from './components/Product'
 import AuthProvider from './utils/AuthProvider'
+import AppProvider from './providers/AppProvider'
 import ProductDetail from './components/ProductDetail'
 
 const client = new ApolloClient({
@@ -15,29 +16,31 @@ const client = new ApolloClient({
 export default function App() {
   return (
     <ApolloProvider client={client}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navigate to="/products" replace={true} />} />
-          <Route
-            path="products"
-            element={
-              <AuthProvider>
-                <Product />
-              </AuthProvider>
-            }
-          ></Route>
-          <Route path="login" element={<Authentication />} />
-          <Route
-            path="bag"
-            element={
-              <AuthProvider>
-                <ShoppingBag />
-              </AuthProvider>
-            }
-          />
-          <Route path="products/:productId" element={<ProductDetail />} />
-        </Routes>
-      </BrowserRouter>
+      <AppProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Navigate to="/products" replace={true} />} />
+            <Route
+              path="products"
+              element={
+                <AuthProvider>
+                  <Product />
+                </AuthProvider>
+              }
+            ></Route>
+            <Route path="login" element={<Authentication />} />
+            <Route
+              path="bag"
+              element={
+                <AuthProvider>
+                  <ShoppingBag />
+                </AuthProvider>
+              }
+            />
+            <Route path="products/:productId" element={<ProductDetail />} />
+          </Routes>
+        </BrowserRouter>
+      </AppProvider>
     </ApolloProvider>
   )
 }

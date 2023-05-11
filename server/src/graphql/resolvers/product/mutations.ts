@@ -21,10 +21,10 @@ const productMutations = {
 
   updateProduct: async (
     parent: any,
-    { id, productInput }: any,
+    { productId, productInput }: any,
     context: any
   ) => {
-    const product = await Product.findById(id);
+    const product = await Product.findOne({ productId });
     if (!product) {
       throw new Error("Product Not found!");
     }
@@ -33,7 +33,9 @@ const productMutations = {
       ? productInput.description
       : product.description;
     product.price = productInput?.price ? productInput?.price : product.price;
-    product.images = productInput?.images ? productInput.images : product.images;
+    product.images = productInput?.images
+      ? productInput.images
+      : product.images;
 
     const updatedProduct: any = await product.save();
     return {
@@ -42,14 +44,14 @@ const productMutations = {
     };
   },
 
-  deleteProduct: async (parent: any, { id }: any, context: any) => {
-    const product: any = await Product.findById(id);
+  deleteProduct: async (parent: any, { productId }: any, context: any) => {
+    const product: any = await Product.findOne({ productId });
     if (!product) {
       throw new Error("Product Not found!");
     }
-    await Product.findByIdAndRemove(id);
+    await Product.deleteOne({ productId });
     return {
-      ...product._doc
+      ...product._doc,
     };
   },
 };

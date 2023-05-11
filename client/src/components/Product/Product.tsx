@@ -18,14 +18,6 @@ import styles from './Product.module.scss'
 
 function Product() {
   const { data, loading, error } = useQuery(GET_ALL_PRODUCTS)
-  console.log('productssss', data)
-
-  // const history = useNavigate()
-  // console.log('history', history)
-
-  // const handleProceed = (e) => {
-  //   id && history.push(generatePath("/products/:id", { id }));
-  // };
   if (loading) return <div>Loading...</div>
   if (error) return <div>{error.message}.</div>
   return (
@@ -54,9 +46,6 @@ function Product() {
                   {' '}
                   <Typography>{product?.description}</Typography>
                   <Typography>${product?.price}</Typography>
-                  {/* <Button size="small" color="primary">
-                    Add to Cart
-                  </Button> */}
                 </CardActions>
               </Card>
             </Grid>

@@ -1,11 +1,11 @@
 .product-detail {
     display: flex;
-    width: 100%;
     padding: 60px;
 }
 
 .left-layout {
     width: 60%;
+    margin-right: 50px;
 }
 
 .right-layout {
@@ -20,7 +20,7 @@
     display: flex;
     align-items: center;
 }
-.social-links a{
+.social-links {
     display: flex;
     align-items: center;
     justify-content: center;

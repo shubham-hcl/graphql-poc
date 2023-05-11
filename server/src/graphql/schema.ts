@@ -10,8 +10,8 @@ const schema = `#graphql
         login(email: String!, password: String!): Login!
         createUser(username: String!, email: String!, password: String!): User!
         createProduct(productInput:ProductInputData): Product!
-        updateProduct(id: ID!, productInput:ProductInputData): Product!
-        deleteProduct(id: ID!): Product! 
+        updateProduct(productId: ID!, productInput:ProductInputData): Product!
+        deleteProduct(productId: ID!): Product! 
         addProductToCart(cartId: String!, lineItem: LineItem!): Cart!
     },
     type Login {
