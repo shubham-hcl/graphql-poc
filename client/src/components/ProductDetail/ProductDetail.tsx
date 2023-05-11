@@ -15,6 +15,14 @@ import Slider from 'react-slick'
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined'
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 
+const mostViewedProducts = [
+  { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone X', price: '$500' },
+  { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone 9', price: '$500' },
+  { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone 12', price: '$500' },
+  { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone 11', price: '$500' },
+  { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone 9', price: '$500' },
+]
+
 const SampleNextArrow = (props: any) => {
   const { className, style, onClick } = props
   return (
@@ -65,16 +73,9 @@ function ProductDetail() {
     prevArrow: <SamplePrevArrow />,
   }
 
-  const mostViewedProducts = [
-    { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone X', price: '$500' },
-    { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone 9', price: '$500' },
-    { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone 12', price: '$500' },
-    { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone 11', price: '$500' },
-    { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone 9', price: '$500' },
-  ]
-
   if (loading) return <div>Loading...</div>
   if (error) return <div>{error.message}.</div>
+  
   return (
     <div>
       <div className={styles['product-detail']}>

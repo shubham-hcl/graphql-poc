@@ -26,7 +26,7 @@ const schema = `#graphql
         name: String!
         description: String!
         thumbnail: String!
-        price: Float!
+        price: String!
         images: [String!]
     }, 
     type User {
@@ -38,7 +38,7 @@ const schema = `#graphql
     input ProductInputData {
         name: String!
         description: String!
-        price: Float!
+        price: String!
         thumbnail: String!
         images: [String!]!
     }

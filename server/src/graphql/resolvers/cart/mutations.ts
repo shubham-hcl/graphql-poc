@@ -48,7 +48,7 @@ const carttMutations = {
     context: any
   ) => {
     let cart: any;
-    const { productId, name, description, price, thumbnail, images, quantity } = lineItem;
+    const { productId, quantity } = lineItem;
     cart = await Cart.findOne({ cartId });
     if (cart) {
       let itemIndex = cart.lineItems.findIndex(
@@ -71,7 +71,7 @@ const carttMutations = {
     context: any
   ) => {
     let cart: any;
-    const { productId, name, description, price, thumbnail, images, quantity } = lineItem;
+    const { productId } = lineItem;
     cart = await Cart.findOne({ cartId });
     if (cart) {
       let itemIndex = cart.lineItems.findIndex(
