@@ -1,7 +1,12 @@
+import { Typography } from '@mui/material/'
+import styles from './Footer.module.scss';
+
 function Footer() {
   return (
     <div>
-      <h1> This is Footer</h1>
+      <footer className={styles['footer']}>
+        <Typography>All rights reserved @Team GraphQl-React</Typography>
+      </footer>
     </div>
   )
 }

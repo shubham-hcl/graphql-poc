@@ -8,7 +8,6 @@ const GET_ALL_PRODUCTS = gql`
       description
       price
       thumbnail
-      image
     }
   }
 `

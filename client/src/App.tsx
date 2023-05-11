@@ -19,6 +19,8 @@ export default function App() {
       <AppProvider>
         <BrowserRouter>
           <Routes>
+            {' '}
+            <Route path="products/:productId" element={<ProductDetail />} />
             <Route
               path="/products"
               element={
@@ -36,7 +38,6 @@ export default function App() {
                 </AuthProvider>
               }
             />
-            <Route path="products/:productId" element={<ProductDetail />} />
           </Routes>
         </BrowserRouter>
       </AppProvider>
