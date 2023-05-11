@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Header from '../Header/Header'
 import styles from './ProductDetail.module.scss'
-import SimpleImageSlider from 'react-simple-image-slider'
+// import SimpleImageSlider from 'react-simple-image-slider'
 import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'

@@ -13,6 +13,8 @@ const schema = `#graphql
         updateProduct(id: ID!, productInput:ProductInputData): Product!
         deleteProduct(id: ID!): Product! 
         addProductToCart(cartId: String!, lineItem: LineItem!): Cart!
+        updateCartProduct(cartId: String!, lineItem: LineItem!): Cart!
+        deleteCartProduct(cartId: String!, lineItem: LineItem!): Cart!
     },
     type Login {
         _id: ID!
@@ -49,7 +51,7 @@ const schema = `#graphql
         productId: ID!,
         name: String!,
         description: String!,
-        price: Float!
+        price: String!
         thumbnail: String!
         images: [String!]!
         quantity: Int!
@@ -58,7 +60,7 @@ const schema = `#graphql
         productId: ID!,
         name: String!,
         description: String!,
-        price: Float!
+        price: String!
         thumbnail: String!
         images: [String!]!
         quantity: Int!
