@@ -1,9 +1,9 @@
 import './App.scss'
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import ShoppingBag from './components/ShoppingBag'
 import Authentication from './components/Authentication'
-import Home from './components/Home'
+import Product from './components/Product'
 import AuthProvider from './utils/AuthProvider'
 import ProductDetail from './components/ProductDetail'
 import AppProvider from './providers/AppProvider'
@@ -19,15 +19,16 @@ export default function App() {
       <AppProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Navigate to="/home" replace={true} />} />
+            {' '}
+            <Route path="products/:productId" element={<ProductDetail />} />
             <Route
-              path="home"
+              path="/products"
               element={
                 <AuthProvider>
-                  <Home />
+                  <Product />
                 </AuthProvider>
               }
-            ></Route>
+            />
             <Route path="login" element={<Authentication />} />
             <Route
               path="bag"
@@ -37,7 +38,6 @@ export default function App() {
                 </AuthProvider>
               }
             />
-            <Route path="products/:productId" element={<ProductDetail />} />
           </Routes>
         </BrowserRouter>
       </AppProvider>

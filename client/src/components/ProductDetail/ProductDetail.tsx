@@ -85,9 +85,9 @@ function ProductDetail() {
 
           <div className="social-links">
             <p>Share At: </p>
-            <SocialIcon url="https://twitter.com"/>
-            <SocialIcon url="https://facebook.com"/>
-            <SocialIcon url="https://pinterest.com"/>
+            <SocialIcon url="https://twitter.com" />
+            <SocialIcon url="https://facebook.com" />
+            <SocialIcon url="https://pinterest.com" />
           </div>
         </div>
       </div>
