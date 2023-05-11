@@ -1,6 +1,4 @@
-import Footer from '../Footer/Footer'
-import Header from '../Header/Header'
-import { Link as ReactLink, unstable_HistoryRouter, useNavigate, useParams } from 'react-router-dom'
+import { Link as ReactLink } from 'react-router-dom'
 import {
   CardActionArea,
   CardActions,
@@ -9,11 +7,9 @@ import {
   Grid,
   Typography,
   Card,
-  Button,
 } from '@mui/material'
-import { useMutation, useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import GET_ALL_PRODUCTS from '../../graphql/Queries/Products'
-import Layout from '../Layout/Layout'
 import styles from './Product.module.scss'
 
 function Product() {
@@ -21,38 +17,36 @@ function Product() {
   if (loading) return <div>Loading...</div>
   if (error) return <div>{error.message}.</div>
   return (
-    <Layout>
-      <div>
-        <Typography variant="h3">Products</Typography>
-        <Grid container spacing={3}>
-          {data?.products?.map((product: any) => (
-            <Grid item md={4} key={product?.name}>
-              <Card className={styles['card']}>
-                <ReactLink to={`/products/${product.productId}`}>
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      image={product?.thumbnail}
-                      title={product?.name}
-                      height={300}
-                    ></CardMedia>
-                    <CardContent>
-                      <Typography>{product?.name}</Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </ReactLink>
+    <div>
+      <Typography variant="h3">Products</Typography>
+      <Grid container spacing={3}>
+        {data?.products?.map((product: any) => (
+          <Grid item md={4} key={product?.name}>
+            <Card className={styles['card']}>
+              <ReactLink to={`/products/${product.productId}`}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    image={product?.thumbnail}
+                    title={product?.name}
+                    height={300}
+                  ></CardMedia>
+                  <CardContent>
+                    <Typography>{product?.name}</Typography>
+                  </CardContent>
+                </CardActionArea>
+              </ReactLink>
 
-                <CardActions>
-                  {' '}
-                  <Typography>{product?.description}</Typography>
-                  <Typography>${product?.price}</Typography>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </div>
-    </Layout>
+              <CardActions>
+                {' '}
+                <Typography>{product?.description}</Typography>
+                <Typography>${product?.price}</Typography>
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </div>
   )
 }
 export default Product

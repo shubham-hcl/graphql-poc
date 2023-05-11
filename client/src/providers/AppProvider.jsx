@@ -1,8 +1,8 @@
 import { ThemeProvider, createTheme, StyledEngineProvider } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
-
+import Header from '../components/Header/Header'
+import Footer from '../components/Footer/Footer'
 import themeOptions from '../config/theme'
-import Layout from '../components/Layout/Layout'
 
 const themes = createTheme(themeOptions)
 
@@ -11,7 +11,9 @@ function AppProvider({ children }) {
     <ThemeProvider theme={themes}>
       <StyledEngineProvider injectFirst>
         <CssBaseline />
-        <Layout children={children} />
+        <Header />
+        {children}
+        <Footer />
       </StyledEngineProvider>
     </ThemeProvider>
   )
