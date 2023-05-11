@@ -11,3 +11,16 @@
     height: 20rem;
     width: 15rem;
 }
+
+nav .image-gallery-thumbnail {
+    width: 50px !important;
+    margin: 0 2rem 0 2rem;
+}
+
+img .image-gallery-image {
+    max-height: 15rem;
+}
+
+.grid-item {
+    width: 100% !important;
+}
