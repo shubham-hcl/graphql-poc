@@ -3,14 +3,14 @@ import { v4 as uuidv4 } from "uuid";
 
 const productMutations = {
   createProduct: async (parent: any, { productInput }: any, context: any) => {
-    const { name, description, price, thumbnail, image } = productInput;
+    const { name, description, price, thumbnail, images } = productInput;
     const product = new Product({
       productId: uuidv4(),
       name,
       description,
       price,
       thumbnail,
-      image,
+      images,
     });
     const createProduct: any = await product.save();
     return {
@@ -33,7 +33,7 @@ const productMutations = {
       ? productInput.description
       : product.description;
     product.price = productInput?.price ? productInput?.price : product.price;
-    product.image = productInput?.image ? productInput.image : product.image;
+    product.images = productInput?.images ? productInput.images : product.images;
 
     const updatedProduct: any = await product.save();
     return {
