@@ -1,51 +1,44 @@
 import React, { useState } from 'react'
-import Header from '../Header/Header'
 import styles from './ProductDetail.module.scss'
-// import SimpleImageSlider from 'react-simple-image-slider'
 import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Button from '@mui/material/Button'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
+import Select from '@mui/material/Select'
 import ImageGallery from 'react-image-gallery'
 import { SocialIcon } from 'react-social-icons'
-
-const productData = {
-  data: {
-    product: {
-      productId: 'eed1e0d3-806b-4430-b3d7-f217f06077f8',
-      name: 'iPhone X',
-      description: 'SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology',
-      price: 899,
-      images: [
-        'https://i.dummyjson.com/data/products/2/1.jpg',
-        'https://i.dummyjson.com/data/products/2/2.jpg',
-        'https://i.dummyjson.com/data/products/2/3.jpg',
-        'https://i.dummyjson.com/data/products/2/thumbnail.jpg',
-      ],
-    },
-  },
-}
+import GET_PRODUCT_DETAIL from '../../graphql/Queries/ProductDetail'
+import { useQuery } from '@apollo/client'
+import { useParams } from 'react-router-dom'
 
 function ProductDetail() {
   const [quantity, setQuantity] = useState(1)
+
+  const params = useParams()
+
+  console.log(params)
+
+  const { data, loading, error } = useQuery(GET_PRODUCT_DETAIL, {
+    variables: {
+      productId: params.productId,
+    },
+  })
 
   const handleChange = (event: any) => {
     setQuantity(event.target.value)
   }
 
-  const images = productData.data.product.images.map((image) => {
+  const images = data?.product?.images.map((image: String) => {
     return {
       original: image,
       thumbnail: image,
     }
   })
-
-  const { data } = productData
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>{error.message}.</div>
   return (
     <div>
-      <Header />
       <div className={styles['product-detail']}>
         <div className={styles['left-layout']}>
           <ImageGallery items={images} thumbnailPosition="left" />
@@ -85,9 +78,9 @@ function ProductDetail() {
 
           <div className="social-links">
             <p>Share At: </p>
-            <SocialIcon url="https://twitter.com"/>
-            <SocialIcon url="https://facebook.com"/>
-            <SocialIcon url="https://pinterest.com"/>
+            <SocialIcon url="https://twitter.com" />
+            <SocialIcon url="https://facebook.com" />
+            <SocialIcon url="https://pinterest.com" />
           </div>
         </div>
       </div>

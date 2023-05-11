@@ -13,7 +13,7 @@ const AuthProvider = ({ children }: any) => {
   }
   useEffect(() => {
     checkUserToken()
-  }, [isLoggedIn])
+  }, [isLoggedIn, checkUserToken])
   return <React.Fragment>{isLoggedIn ? children : null}</React.Fragment>
 }
 export default AuthProvider

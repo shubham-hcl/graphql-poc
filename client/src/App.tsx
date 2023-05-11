@@ -3,10 +3,10 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import ShoppingBag from './components/ShoppingBag'
 import Authentication from './components/Authentication'
-import Home from './components/Home'
+import Product from './components/Product'
 import AuthProvider from './utils/AuthProvider'
-import ProductDetail from './components/ProductDetail'
 import AppProvider from './providers/AppProvider'
+import ProductDetail from './components/ProductDetail'
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
@@ -19,12 +19,12 @@ export default function App() {
       <AppProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Navigate to="/home" replace={true} />} />
+            <Route path="/" element={<Navigate to="/products" replace={true} />} />
             <Route
-              path="home"
+              path="products"
               element={
                 <AuthProvider>
-                  <Home />
+                  <Product />
                 </AuthProvider>
               }
             ></Route>

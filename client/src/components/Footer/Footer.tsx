@@ -1,6 +1,5 @@
-
-import {Grid, Link, Typography} from '@mui/material';
-import styles from './Footer.module.scss';
+import { Grid, Link, Typography } from '@mui/material'
+import styles from './Footer.module.scss'
 const footers = [
   {
     title: 'Company',
@@ -18,40 +17,38 @@ const footers = [
     title: 'Legal',
     description: ['Privacy policy', 'Terms of use'],
   },
-];
+]
 function Footer() {
   return (
-       <footer className={styles['footer']}>
-         <div className={styles['footer__innerContainer']}>
-
-       
+    <footer className={styles['footer']}>
+      <div className={styles['footer__innerContainer']}>
         <Grid container spacing={10}>
-          {footers.map(footer => (
+          {footers.map((footer) => (
             <Grid item xs key={footer.title}>
-              
               <Typography variant="h6" gutterBottom>
-               
                 {footer.title}
-               
               </Typography>
-             
-              {footer.description.map(item => (
+
+              {footer.description.map((item) => (
                 <>
-                
-                <Typography key={item} variant="subtitle1">
-                <Link className={styles['footer__innerContainer__anchor']} component="a" href={'#'}> {item} </Link>
-                </Typography>
-               
+                  <Typography key={item} variant="subtitle1">
+                    <Link
+                      className={styles['footer__innerContainer__anchor']}
+                      component="a"
+                      href={'#'}
+                    >
+                      {' '}
+                      {item}{' '}
+                    </Link>
+                  </Typography>
                 </>
               ))}
             </Grid>
           ))}
         </Grid>
-        <div>
-
-        </div>
-        </div>
-      </footer>
+        <div></div>
+      </div>
+    </footer>
   )
 }
 export default Footer
