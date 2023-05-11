@@ -3,7 +3,7 @@ const schema = `#graphql
     type Query {
         users(id: ID): [User!]!
         products: [Product!]!
-        product(id: ID!): Product!
+        product(productId: ID!): Product!
         cart(cartId: ID!): Cart
     },
     type Mutation {
@@ -25,7 +25,7 @@ const schema = `#graphql
         description: String!
         thumbnail: String!
         price: Float!
-        image: String!
+        images: [String!]
     }, 
     type User {
         _id: String!
@@ -38,11 +38,12 @@ const schema = `#graphql
         description: String!
         price: Float!
         thumbnail: String!
-        image: String!
+        images: [String!]!
     }
     type Cart {
         cartId: ID!,
         lineItems: [cartItem!]!
+        totalPrice: String!
     }
     type cartItem {
         productId: ID!,
@@ -50,7 +51,7 @@ const schema = `#graphql
         description: String!,
         price: Float!
         thumbnail: String!
-        image: String
+        images: [String!]!
         quantity: Int!
     }
     input LineItem {
@@ -59,7 +60,7 @@ const schema = `#graphql
         description: String!,
         price: Float!
         thumbnail: String!
-        image: String
+        images: [String!]!
         quantity: Int!
     }
 `;

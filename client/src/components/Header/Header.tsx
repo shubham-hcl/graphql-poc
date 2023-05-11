@@ -13,6 +13,7 @@ import {
 import React from 'react';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import PropTypes from 'prop-types';
+import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -44,8 +45,8 @@ ElevationScroll.propTypes = {
 
 const Header = (props: any) => {
   const links = [
-    { id: 1, route: 'Home', url: '/' },
-    { id: 2, route: 'Products', url: '/products' },
+    { id: 1, route: 'Home', url: '/products' },
+    // { id: 2, route: 'Products', url: '/products' },
     { id: 3, route: 'My Bag', url: '/bag' },
     { id: 4, route: 'Logout', url: '/login' },
   ];
@@ -74,9 +75,12 @@ const Header = (props: any) => {
     >
       <List>
         {links.map((link) => (
+          <Link component="a" className={styles['header__links']} href={link.url} underline="none">
+       
           <ListItem button key={link.id}>
             <ListItemText primary={link.route} />
           </ListItem>
+          </Link>
         ))}
       </List>
     </Box>
@@ -120,14 +124,18 @@ const Header = (props: any) => {
               sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                flexGrow: '0.1',
+                flexGrow: '0.05',
               }}
             >
               {links.map((link) => (
-                <Link component="a" href={link.url} underline="none" key={link.id}>
+                <Link component="a" className={styles['header__links']} href={link.url} underline="none" key={link.id}>
                   <Typography>{link.route}</Typography>
                 </Link>
               ))}
+              <Link component="a" className={styles['header__links']} href={'/login'} underline="none">
+                  <LogoutIcon />
+                </Link>
+              
             </Box>}
            
           </Toolbar>
