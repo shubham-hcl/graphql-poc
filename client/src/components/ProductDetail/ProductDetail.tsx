@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
 import styles from './ProductDetail.module.scss'
-import SimpleImageSlider from 'react-simple-image-slider'
 import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Button from '@mui/material/Button'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
+import Select from '@mui/material/Select'
 import ImageGallery from 'react-image-gallery'
 import { SocialIcon } from 'react-social-icons'
 
@@ -91,6 +91,7 @@ function ProductDetail() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
