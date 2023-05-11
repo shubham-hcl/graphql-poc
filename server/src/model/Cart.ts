@@ -12,6 +12,7 @@ const CartSchema = new Schema({
       images: Array,
       quantity: Number,
     }],
+    totalAmount: String
   },
   {
     timestamps: true,
