@@ -42,6 +42,50 @@ const carttMutations = {
       ...cartData._doc,
     };
   },
+  updateCartProduct: async (
+    parent: any,
+    { cartId, lineItem }: any,
+    context: any
+  ) => {
+    let cart: any;
+    const { productId, name, description, price, thumbnail, images, quantity } = lineItem;
+    cart = await Cart.findOne({ cartId });
+    if (cart) {
+      let itemIndex = cart.lineItems.findIndex(
+        (item: any) => item.productId == productId
+      );
+      if (itemIndex > -1) {
+        let productItem = cart.lineItems[itemIndex];
+        productItem.quantity = quantity;
+        cart.lineItems[itemIndex] = productItem;
+      }
+    }
+    const cartData: any = await cart.save();
+    return {
+      ...cartData._doc,
+    };
+  },
+  deleteCartProduct: async (
+    parent: any,
+    { cartId, lineItem }: any,
+    context: any
+  ) => {
+    let cart: any;
+    const { productId, name, description, price, thumbnail, images, quantity } = lineItem;
+    cart = await Cart.findOne({ cartId });
+    if (cart) {
+      let itemIndex = cart.lineItems.findIndex(
+        (item: any) => item.productId == productId
+      );
+      if (itemIndex > -1) {
+        cart.lineItems.splice(itemIndex, 1);
+      }
+    }
+    const cartData: any = await cart.save();
+    return {
+      ...cartData._doc,
+    };
+  },
 };
 
 export default carttMutations;
