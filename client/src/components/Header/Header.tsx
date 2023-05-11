@@ -48,7 +48,7 @@ const Header = (props: any) => {
     { id: 1, route: 'Home', url: '/products' },
     // { id: 2, route: 'Products', url: '/products' },
     { id: 3, route: 'My Bag', url: '/bag' },
-    // { id: 4, route: 'Logout', url: '/login' },
+    { id: 4, route: 'Logout', url: '/login' },
   ];
 
   const [state, setState] = React.useState({
@@ -75,9 +75,12 @@ const Header = (props: any) => {
     >
       <List>
         {links.map((link) => (
+          <Link component="a" className={styles['header__links']} href={link.url} underline="none">
+       
           <ListItem button key={link.id}>
             <ListItemText primary={link.route} />
           </ListItem>
+          </Link>
         ))}
       </List>
     </Box>
@@ -125,11 +128,11 @@ const Header = (props: any) => {
               }}
             >
               {links.map((link) => (
-                <Link component="a" href={link.url} underline="none" key={link.id}>
+                <Link component="a" className={styles['header__links']} href={link.url} underline="none" key={link.id}>
                   <Typography>{link.route}</Typography>
                 </Link>
               ))}
-              <Link component="a" href={'/login'} underline="none">
+              <Link component="a" className={styles['header__links']} href={'/login'} underline="none">
                   <LogoutIcon />
                 </Link>
               

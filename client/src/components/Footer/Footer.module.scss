@@ -1,0 +1,17 @@
+.footer{
+    background-color: #3b3b3b;
+    color: white;
+    &__innerContainer{
+        max-width: 1440px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 70px 0;
+        &__anchor{
+            color: white;
+            text-decoration: none;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
