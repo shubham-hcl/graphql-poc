@@ -18,18 +18,24 @@ function Product() {
   if (error) return <div>{error.message}.</div>
   return (
     <div>
-      <Typography variant="h3">Products</Typography>
-      <Grid container spacing={3}>
+      <Typography variant="h3" sx={{ textAlign: 'center', paddingTop:5 }}>
+        Products
+      </Typography>
+      <Grid container spacing={3} className={styles.container}>
         {data?.products?.map((product: any) => (
-          <Grid item md={4} key={product?.name}>
+          <Grid item md={4} key={product?.name} className={styles.grid}>
             <Card className={styles['card']}>
               <ReactLink to={`/products/${product.productId}`}>
                 <CardActionArea>
                   <CardMedia
                     component="img"
-                    image={product?.thumbnail}
+                    image={product?.images[0]}
                     title={product?.name}
                     height={300}
+                    sx={{
+                      width: 'auto',
+                      margin: 'auto',
+                    }}
                   ></CardMedia>
                   <CardContent>
                     <Typography>{product?.name}</Typography>

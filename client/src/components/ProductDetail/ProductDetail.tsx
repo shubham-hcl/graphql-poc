@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import { useQuery } from '@apollo/client'
+import { useParams } from 'react-router-dom'
+import { useMutation } from '@apollo/client'
+import { useNavigate } from 'react-router-dom'
 import styles from './ProductDetail.module.scss'
 import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'
@@ -8,26 +12,22 @@ import Button from '@mui/material/Button'
 import Select from '@mui/material/Select'
 import ImageGallery from 'react-image-gallery'
 import { SocialIcon } from 'react-social-icons'
-import GET_PRODUCT_DETAIL from '../../graphql/Queries/ProductDetail'
-import { useQuery } from '@apollo/client'
-import { useParams } from 'react-router-dom'
 import Slider from 'react-slick'
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined'
-import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
+import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined'
+import { mostViewedProducts } from '../../constant'
+import ADD_PRODUCT_TO_CART from '../../graphql/Mutations/AddProductToCart'
+import GET_PRODUCT_DETAIL from '../../graphql/Queries/ProductDetail'
 
-const mostViewedProducts = [
-  { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone X', price: '$500' },
-  { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone 9', price: '$500' },
-  { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone 12', price: '$500' },
-  { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone 11', price: '$500' },
-  { image: 'https://i.dummyjson.com/data/products/2/1.jpg', title: 'Iphone 9', price: '$500' },
-]
 
 const SampleNextArrow = (props: any) => {
   const { className, style, onClick } = props
   return (
     <div onClick={onClick}>
-      <ArrowForwardIosOutlinedIcon className={className} style={{ ...style, background: 'grey', color: 'white', height: 30, width: 30 }} />
+      <ArrowForwardIosOutlinedIcon
+        className={className}
+        style={{ ...style, background: 'grey', color: 'white', height: 30, width: 30 }}
+      />
     </div>
   )
 }
@@ -36,12 +36,16 @@ const SamplePrevArrow = (props: any) => {
   const { className, style, onClick } = props
   return (
     <div onClick={onClick}>
-      <ArrowBackIosNewOutlinedIcon className={className} style={{ ...style, background: 'grey', color: 'white', height: 30, width: 30 }} />
+      <ArrowBackIosNewOutlinedIcon
+        className={className}
+        style={{ ...style, background: 'grey', color: 'white', height: 30, width: 30 }}
+      />
     </div>
   )
 }
 
-function ProductDetail() {
+const ProductDetail = () => {
+  const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1)
   const params = useParams()
   const { data, loading, error } = useQuery(GET_PRODUCT_DETAIL, {
@@ -50,8 +54,34 @@ function ProductDetail() {
     },
   })
 
+  const [addProductToCart] = useMutation(ADD_PRODUCT_TO_CART)
+
   const handleChange = (event: any) => {
     setQuantity(event.target.value)
+  }
+
+  const handleAddToCart = () => {
+    const cartId = localStorage.getItem('cartId') || ''
+    const { productId, name, description, price, thumbnail, images } = data.product
+    addProductToCart({
+      variables: {
+        cartId,
+        lineItem: {
+          productId,
+          name,
+          description,
+          price,
+          thumbnail,
+          images,
+          quantity,
+        },
+      },
+      onCompleted: ({addProductToCart}) => {
+        if(addProductToCart.cartId)
+        localStorage.setItem('cartId', addProductToCart.cartId);
+        navigate('/bag');
+      },
+    })
   }
 
   const images = data?.product?.images.map((image: String) => {
@@ -75,7 +105,7 @@ function ProductDetail() {
 
   if (loading) return <div>Loading...</div>
   if (error) return <div>{error.message}.</div>
-  
+
   return (
     <div>
       <div className={styles['product-detail']}>
@@ -111,7 +141,13 @@ function ProductDetail() {
               </Select>
             </FormControl>
           </Box>
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            onClick={handleAddToCart}
+          >
             Add to cart
           </Button>
 
@@ -134,14 +170,15 @@ function ProductDetail() {
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <img
                   style={{ textAlign: 'center' }}
-                  alt={card.title}
-                  src={card.image}
+                  alt={card.name}
+                  src={card.images[0]}
                   height="200"
                 />
               </div>
               <div>
-                <h3 style={{ textAlign: 'center' }}>{card.title}</h3>
-                <p style={{ textAlign: 'center' }}>Price: {card.price}</p>
+                <h3 style={{ textAlign: 'center' }}>{card.name}</h3>
+                <h3 style={{ textAlign: 'center' }}>{card.description}</h3>
+                <p style={{ textAlign: 'center' }}>Price: ${card.price}</p>
                 <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                   Add to cart
                 </Button>

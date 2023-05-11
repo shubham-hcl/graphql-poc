@@ -6,6 +6,7 @@ const LOGIN_MUTATION = gql`
       _id
       email
       accessToken
+      cartId
     }
   }
 `

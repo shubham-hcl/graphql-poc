@@ -20,6 +20,7 @@ const schema = `#graphql
         _id: ID!
         email: String!
         accessToken: String!
+        cartId: String
     }
     type Product {
         productId: ID!

@@ -41,6 +41,9 @@ export default function Signin({ onClick }: any) {
       onCompleted: ({ login }) => {
         if (login.accessToken) {
           localStorage.setItem('access-token', login.accessToken)
+          if (login.cartId) {
+            localStorage.setItem('cartId', login.cartId)
+          }
           navigate('/products')
         }
       },
