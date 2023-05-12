@@ -37,11 +37,11 @@ const schema = `#graphql
         password: String
     },
     input ProductInputData {
-        name: String!
-        description: String!
-        price: String!
-        thumbnail: String!
-        images: [String!]!
+        name: String
+        description: String
+        price: String
+        thumbnail: String
+        images: [String]
     }
     type Cart {
         cartId: ID!,
