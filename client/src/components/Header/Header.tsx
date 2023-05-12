@@ -20,7 +20,7 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import ShoppingBagRoundedIcon from '@mui/icons-material/ShoppingBagRounded'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import PropTypes from 'prop-types'
 import LogoutIcon from '@mui/icons-material/Logout'
@@ -55,13 +55,23 @@ ElevationScroll.propTypes = {
 
 const Header = (props: any) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  // const [user, setUser] = useState({});
   const open = Boolean(anchorEl);
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  useEffect(() => {
+    // if(localStorage.getItem('user')){
+      
+    //   setUser(user);
+    // }
+  }, [])
   const links = [
     { id: 1, route: 'Home', url: '/products' },
     // { id: 2, route: 'Products', url: '/products' },
@@ -117,9 +127,9 @@ const Header = (props: any) => {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     > <Box sx={{m:2}}>
-        <Avatar sx={{ width: 30, height: 30, fontSize:18 }}>M</Avatar>
-      <div>ankit95@mailinator.com</div>
-      <div>ankit95</div>
+        <Avatar sx={{ width: 30, height: 30, fontSize:18 }}>{user?.username?.charAt(0)}</Avatar>
+      <Box component="h5" sx={{m:0}}>Hello {user?.username}</Box>
+      <Box component="h6" sx={{m:0}}>{user?.email}</Box>
     </Box>
       <hr />
       <List>
@@ -190,7 +200,7 @@ const Header = (props: any) => {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 30, height: 30, fontSize:18 }}>M</Avatar>
+            <Avatar sx={{ width: 30, height: 30, fontSize:18 }}>{user?.username?.charAt(0)}</Avatar>
           </IconButton>
         </Tooltip>
         <Menu
@@ -229,10 +239,10 @@ const Header = (props: any) => {
       >
          {/* <MenuItem> */}
          <Box sx={{m: 1}}>
-          Username: ankit95
+          Username: {user?.username}
          </Box>
          <Box sx={{m: 1}}>
-          Email: ankit95@mailinator.com
+          Email: {user?.email}
          </Box>
          
         {/* </MenuItem> */}
