@@ -24,7 +24,7 @@ function Footer() {
       <div className={styles['footer__innerContainer']}>
         <Grid container spacing={10}>
           {footers.map((footer) => (
-            <Grid item xs key={footer.title}>
+            <Grid item xs={12} sm={6} md={3} key={footer.title}>
               <Typography variant="h6" gutterBottom>
                 {footer.title}
               </Typography>
