@@ -5,7 +5,10 @@
         max-width: 1440px;
         margin: 0 auto;
         width: 100%;
-        padding: 70px 0;
+        padding: 70px 30px;
+        @media (max-width: 767px) {
+            padding: 70px 20px;
+        }
         &__anchor{
             color: white;
             text-decoration: none;
