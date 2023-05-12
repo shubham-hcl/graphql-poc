@@ -6,12 +6,20 @@ function ProductImageGallery({ images }: any) {
     return {
       original: image,
       thumbnail: image,
+      thumbnailHeight: '20px',
+      thumbnailWidth: '20px',
+      originalHeight: '200px',
     }
   })
 
   return (
-    <div className={styles['img image-gallery-image']}>
-      <ImageGallery sizes={width:'20px} items={img} thumbnailPosition="bottom" />
+    <div className={styles['image-gallery-right-nav']}>
+      <ImageGallery
+        items={img}
+        showFullscreenButton={false}
+        showPlayButton={false}
+        thumbnailPosition="bottom"        
+      />
     </div>
   )
 }

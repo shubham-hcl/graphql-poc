@@ -12,15 +12,125 @@
     width: 15rem;
 }
 
-nav .image-gallery-thumbnail {
-    width: 50px !important;
-    margin: 0 2rem 0 2rem;
-}
-
-img .image-gallery-image {
-    max-height: 15rem;
-}
-
 .grid-item {
-    width: 100% !important;
+    max-width: 50% !important;
+}
+
+.container {
+    padding: 50px;
+}
+
+.image-gallery-thumbnails {
+ 
+    margin: 0 30px !important;
+}
+
+.image-gallery-left-nav, .image-gallery-right-nav {
+    top: 110% !important;
+}
+
+.mainNav {
+    background: white;
+    transition: 'background .1s linear';
+  }
+
+  .div-nav {
+    display: grid;
+    grid-area: desktop;
+    grid-template-areas: 'women men accessories shoes search';
+    grid-template-columns: 0.7fr 0.7fr 0.7fr 0.7fr 3fr;
+    grid-template-rows: 4.75rem minmax(0, auto);
+    width: 100%;
+    max-width: 85.75rem;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 1.5625rem;
+    font-weight: 700;
+    box-shadow: 2px 2px #80808078;
+  }
+  
+  .div-women {
+    display: flex;
+    grid-area: women;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .div-men {
+    display: flex;
+    grid-area: men;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .div-accessories {
+    display: flex;
+    grid-area: accessories;
+    align-items: center;
+    justify-content: flex-start;
+    color: red !important;
+  }
+  .div-shoes {
+    display: flex;
+    grid-area: shoes;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .div-search{
+    display: flex;
+    grid-area: search;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+
+  .div-main {
+    display: grid;
+    grid-area: desktop;
+    grid-template-areas: 'left right';
+    grid-template-columns: 2fr 5fr;
+    grid-template-rows: 4.75rem minmax(0, auto);
+    width: 100%;
+    max-width: 85.75rem;
+    align-items: center;
+    margin: 1px auto;
+    padding: 0 1.5625rem;
+    font-weight: 700;
+  }
+  
+  .div-left {
+    display: flex;
+    grid-area: left;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+    
+  .div-right {
+    display: flex;
+    grid-area: right;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+
+  .float-container {
+    border: 3px solid #fff;
+    padding: 20px;
+    display: flex;
+}
+
+.float-child-left {
+    width: 30%;
+    float: left;
+    padding: 20px;
+}
+.float-child-right {
+    width: 70%;
+    float: left;
+    padding: 20px;
+}
+
+.typography{
+    font-size: 2rem;
+    font-weight: 500;
 }
