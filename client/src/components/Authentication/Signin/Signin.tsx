@@ -39,20 +39,19 @@ export default function Signin({ onClick }: any) {
         password: data.password,
       },
       onCompleted: ({ login }) => {
-        if (login.accessToken) {
-          localStorage.setItem('access-token', login.accessToken)
-          if (login.cartId) {
-            localStorage.setItem('cartId', login.cartId)
-          }
+        if (login) {
+          const {accessToken, username, email, cartId} = login
+          localStorage.setItem('access-token', accessToken)
+          localStorage.setItem('user', JSON.stringify({username, email}))
+          localStorage.setItem('cartId', cartId)
           navigate('/products')
         }
       },
     })
-    console.log(data)
   }
 
   useEffect(() => {
-    localStorage.removeItem('access-token')
+    localStorage.clear()
   }, [])
 
   return (

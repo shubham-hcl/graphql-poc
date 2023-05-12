@@ -18,6 +18,7 @@ const schema = `#graphql
     },
     type Login {
         _id: ID!
+        username: String!
         email: String!
         accessToken: String!
         cartId: String
@@ -37,11 +38,11 @@ const schema = `#graphql
         password: String
     },
     input ProductInputData {
-        name: String!
-        description: String!
-        price: String!
-        thumbnail: String!
-        images: [String!]!
+        name: String
+        description: String
+        price: String
+        thumbnail: String
+        images: [String]
     }
     type Cart {
         cartId: ID!,
