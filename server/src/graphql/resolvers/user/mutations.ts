@@ -45,6 +45,7 @@ const userMutations = {
     }
     const response = {
       _id,
+      username: user.username,
       email,
       accessToken: token,
       cartId,

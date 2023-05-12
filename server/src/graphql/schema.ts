@@ -18,6 +18,7 @@ const schema = `#graphql
     },
     type Login {
         _id: ID!
+        username: String!
         email: String!
         accessToken: String!
         cartId: String
