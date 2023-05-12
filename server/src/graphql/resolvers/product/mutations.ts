@@ -33,6 +33,7 @@ const productMutations = {
       ? productInput.description
       : product.description;
     product.price = productInput?.price ? productInput?.price : product.price;
+    product.thumbnail = productInput?.thumbnail ? productInput?.thumbnail : product.thumbnail;
     product.images = productInput?.images
       ? productInput.images
       : product.images;

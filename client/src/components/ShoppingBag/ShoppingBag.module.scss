@@ -11,10 +11,18 @@
     border-radius: 0.25rem;
     display: flex;
     flex-direction: row;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
     
     &__products {
-      flex-grow: 2;
+      flex-grow: 1;
       border-right: 4px solid #d31334;
+
+      @media (max-width: 767px) {
+        border-right: none;
+      }
 
       &__product {
         display: flex;
@@ -73,11 +81,16 @@
 
     &__total_section {
       padding-left: 1rem;
-      flex-grow: 1;
+      flex-basis: 20vw;
       color: #d31334;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
+      @media (max-width: 767px) {
+        flex-basis: 20vh;
+        padding-left: 0rem;
+      }
 
       &__total {
         display: flex;

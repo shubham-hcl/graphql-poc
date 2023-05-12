@@ -1,3 +1,7 @@
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+@import "slick-carousel/slick/slick.scss";
+@import "slick-carousel/slick/slick-theme.scss";
+
 .App {
   text-align: center;
 }
@@ -28,11 +32,34 @@
   color: #61dafb;
 }
 
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.image-gallery-slides {
+  border: 2px solid rgba(205, 205, 205, 0.39);
+}
+
+.slick-slide {
+   padding: 20px;
+}
+
+.image-gallery-thumbnail {
+  height: 80px;
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.image-gallery-thumbnail-image {
+  width: 60px !important;
+  height: 60px !important;
+
 }

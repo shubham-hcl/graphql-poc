@@ -9,7 +9,7 @@ const CartSchema = new Schema(
         productId: String,
         name: String,
         description: String,
-        price: Number,
+        price: String,
         thumbnail: String,
         images: Array,
         quantity: Number,

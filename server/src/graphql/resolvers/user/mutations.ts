@@ -1,9 +1,10 @@
 import User from "../../../model/User";
-import bcrypt from "bcryptjs"
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { Cart } from "../../../model/Cart";
 
 const userMutations = {
-  createUser: async (parent: any, args: any, context: any) => {  
+  createUser: async (parent: any, args: any, context: any) => {
     let securePassword = await bcrypt.hash(args.password, 12);
     const user = new User({
       username: args.username,
@@ -18,6 +19,7 @@ const userMutations = {
   },
 
   login: async (parent: any, args: any, context: any) => {
+    let cartId: string = "";
     const user = await User.findOne({ email: args.email });
     if (!user) {
       throw new Error("No user found ");
@@ -37,13 +39,18 @@ const userMutations = {
       "secret",
       { expiresIn: "1d" }
     );
+    const cart: any = await Cart.find();
+    if (cart?.length) {
+      cartId = cart[0].cartId;
+    }
     const response = {
       _id,
       email,
       accessToken: token,
+      cartId,
     };
     return response;
-  }
+  },
 };
 
 export default userMutations;

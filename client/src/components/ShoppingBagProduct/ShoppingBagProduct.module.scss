@@ -7,6 +7,11 @@
 
     &__image {
       flex-grow: 0;
+
+      img {
+        width: 10vw;
+        height: 10vw;
+      }
     }
 
     &__name {
@@ -23,11 +28,18 @@
         margin-bottom: 0.5rem;
       }
 
+      &__counter {
+        display: flex;
+      }
     }
 
     &__total {
       flex-grow: 0;
       padding-right: 1rem;
+
+      @media (max-width: 767px) {
+        padding-right: 0;
+      }
     }
   }
 }
