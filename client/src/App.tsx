@@ -9,7 +9,7 @@ import AppProvider from './providers/AppProvider'
 import ProductDetail from './components/ProductDetail'
 
 const client = new ApolloClient({
-  uri: 'https://main.d2g2z5kdz5rpse.amplifyapp.com/graphql', // Change to http://localhost:4000/graphql for dev env
+  uri: 'http://localhost:4000/graphql',
   cache: new InMemoryCache(),
 })
 
