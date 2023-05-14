@@ -29,148 +29,91 @@ function Product() {
 
   return (
     <div>
-      <div>
-        {' '}
-        <Grid className={styles['div-nav']} container>
-          <Grid className={styles['div-women']}>WOMEN</Grid>
-          <Grid className={styles['div-men']}>MEN</Grid>
-          <Grid className={styles['div-accessories']}>ACCESSORIES</Grid>
-          <Grid className={styles['div-shoes']}>SHOES</Grid>
-          <Grid className={styles['div-search']}>
-            <TextField id="outlined-basic" label="Search" variant="outlined" />
-          </Grid>
-        </Grid>
-        <div className={styles['float-container']}>
-          <div className={styles['float-child-left']}>
-            <Typography className={styles['typography']}>Whats New?</Typography>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<Add />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography>Gender</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <FormControlLabel
-                  aria-label="Men"
-                  onClick={(event) => event.stopPropagation()}
-                  onFocus={(event) => event.stopPropagation()}
-                  control={<Checkbox />}
-                  label="Men"
-                />
-                <FormControlLabel
-                  aria-label="Women"
-                  onClick={(event) => event.stopPropagation()}
-                  onFocus={(event) => event.stopPropagation()}
-                  control={<Checkbox />}
-                  label="Women"
-                />
-              </AccordionDetails>
-            </Accordion>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<Add />}
-                aria-controls="panel2a-content"
-                id="panel2a-header"
-              >
-                <Typography>Category</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-                  lacus ex, sit amet blandit leo lobortis eget.
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<Add />}
-                aria-controls="panel3a-content"
-                id="panel3a-header"
-              >
-                <Typography>Type</Typography>
-              </AccordionSummary>
-            </Accordion>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<Add />}
-                aria-controls="panel3a-content"
-                id="panel3a-header"
-              >
-                <Typography>Activity</Typography>
-              </AccordionSummary>
-            </Accordion>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<Add />}
-                aria-controls="panel3a-content"
-                id="panel3a-header"
-              >
-                <Typography>Size</Typography>
-              </AccordionSummary>
-            </Accordion>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<Add />}
-                aria-controls="panel3a-content"
-                id="panel3a-header"
-              >
-                <Typography>Size Type</Typography>
-              </AccordionSummary>
-            </Accordion>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<Add />}
-                aria-controls="panel3a-content"
-                id="panel3a-header"
-              >
-                <Typography>Color</Typography>
-              </AccordionSummary>
-            </Accordion>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<Add />}
-                aria-controls="panel3a-content"
-                id="panel3a-header"
-              >
-                <Typography>Collection</Typography>
-              </AccordionSummary>
-            </Accordion>
-          </div>
+      <div className={styles['top-head']}>
+        <h3>Shop All</h3>
+      </div>
+      <div className={styles['float-container']}>
+        <div className={styles['float-child-left']}>
+          <Typography className={styles['typography']}>Filters</Typography>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<Add />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography>Brand</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <FormControlLabel
+                aria-label="Apple"
+                onClick={(event) => event.stopPropagation()}
+                onFocus={(event) => event.stopPropagation()}
+                control={<Checkbox />}
+                label="Apple"
+              />
+              <FormControlLabel
+                aria-label="OnePlus"
+                onClick={(event) => event.stopPropagation()}
+                onFocus={(event) => event.stopPropagation()}
+                control={<Checkbox />}
+                label="OnePlus"
+              />
+              <FormControlLabel
+                aria-label="Samsung"
+                onClick={(event) => event.stopPropagation()}
+                onFocus={(event) => event.stopPropagation()}
+                control={<Checkbox />}
+                label="Samsung"
+              />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<Add />}
+              aria-controls="panel2a-content"
+              id="panel2a-header"
+            >
+              <Typography>Model</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<Add />}
+              aria-controls="panel3a-content"
+              id="panel3a-header"
+            >
+              <Typography>Color</Typography>
+            </AccordionSummary>
+          </Accordion>
+        </div>
 
-          <div className={styles['float-child-right']}>
-            <div className={styles['padding-left: 50px;']}>
-              <Grid container spacing={3}>
-                {data?.products?.map((product: any) => (
-                  <Grid item md={5} key={product?.name} className={styles['grid-item']}>
-                    <Card className={styles['card']}>
-                      <CardActionArea>
-                        <CardMedia
-                          children={<ProductImageGallery images={product?.images} />}
-                          // component="img"
-                          // image={product?.thumbnail}
-                          // title={product?.name}
-                          // height={300}
-                        ></CardMedia>
-                        {/* <ImageGallery items={images} thumbnailPosition="left" /> */}
-                        <CardContent>
-                          <ReactLink to={`/products/${product.productId}`}>
-                            <Typography>{product?.name}</Typography>
-                          </ReactLink>
-                        </CardContent>
-                      </CardActionArea>
+        <div className={styles['float-child-right']}>
+          <Typography className={styles['typography']}>Results</Typography>
+          <div className={styles['product-list']}>
+              {data?.products?.map((product: any) => (
+                <Grid item md={5} key={product?.name} className={styles['grid-item']}>
+                  <Card className={styles['card']}>
+                    <CardActionArea>
+                      <CardMedia
+                        children={<ProductImageGallery images={product?.images} />}
+                      ></CardMedia>
+                      <CardContent>
+                        <ReactLink to={`/products/${product.productId}`}>
+                          <Typography sx={{textAlign: 'center'}}>{product?.name}</Typography>
+                        </ReactLink>
+                      </CardContent>
+                    </CardActionArea>
 
-                      <CardActions>
-                        {' '}
-                        <Typography>{product?.description}</Typography>
-                        <Typography>${product?.price}</Typography>
-                      </CardActions>
-                    </Card>
-                  </Grid>
-                ))}
-              </Grid>
-            </div>
+                    <CardActions sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                      <Typography sx={{fontSize: 12}}>{product?.description}</Typography>
+                      <Typography sx={{fontSize: 12}}>${product?.price}</Typography>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))}
           </div>
         </div>
       </div>

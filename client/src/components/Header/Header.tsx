@@ -71,7 +71,7 @@ const Header = (props: any) => {
   }
 
   const links = [
-    { id: 1, route: 'Home', url: '/products' },
+    { id: 1, route: 'Shop', url: '/products' },
     {
       id: 3,
       route: (
@@ -86,7 +86,7 @@ const Header = (props: any) => {
     },
   ]
   const linksForMobile = [
-    { id: 1, route: 'Home', url: '/products' },
+    { id: 1, route: 'Shop', url: '/products' },
     {
       id: 2,
       route: 'My Bag',

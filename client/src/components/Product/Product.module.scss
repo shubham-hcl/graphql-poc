@@ -1,136 +1,160 @@
 .card {
-    cursor: pointer;
-    display: block !important;
-    height: 100% !important;
-    max-width: 19.5625rem !important;
-    position: relative !important;
-    transition: all .5s ease;
+  cursor: pointer;
+  display: block !important;
+  height: 100% !important;
+  max-width: 19.5625rem !important;
+  position: relative !important;
+  transition: all .5s ease;
 }
 
 .image {
-    height: 20rem;
-    width: 15rem;
+  height: 20rem;
+  width: 15rem;
 }
 
 .grid-item {
-    max-width: 50% !important;
+  width: 30% !important;
+  margin-right: 30px;
+  margin-bottom: 30px;
+
 }
 
 .container {
-    padding: 50px;
+  padding: 50px;
 }
 
 .image-gallery-thumbnails {
- 
-    margin: 0 30px !important;
+
+  margin: 0 30px !important;
 }
 
-.image-gallery-left-nav, .image-gallery-right-nav {
-    top: 110% !important;
+.image-gallery-left-nav,
+.image-gallery-right-nav {
+  top: 110% !important;
 }
 
 .mainNav {
-    background: white;
-    transition: 'background .1s linear';
-  }
+  background: white;
+  transition: 'background .1s linear';
+}
 
-  .div-nav {
-    display: grid;
-    grid-area: desktop;
-    grid-template-areas: 'women men accessories shoes search';
-    grid-template-columns: 0.7fr 0.7fr 0.7fr 0.7fr 3fr;
-    grid-template-rows: 4.75rem minmax(0, auto);
-    width: 100%;
-    max-width: 85.75rem;
-    align-items: center;
-    margin: 0 auto;
-    padding: 0 1.5625rem;
-    font-weight: 700;
-    box-shadow: 2px 2px #80808078;
-  }
-  
-  .div-women {
-    display: flex;
-    grid-area: women;
-    align-items: center;
-    justify-content: flex-start;
-  }
+.div-nav {
+  display: grid;
+  grid-area: desktop;
+  grid-template-areas: 'women men accessories shoes search';
+  grid-template-columns: 0.7fr 0.7fr 0.7fr 0.7fr 3fr;
+  grid-template-rows: 4.75rem minmax(0, auto);
+  width: 100%;
+  max-width: 85.75rem;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 1.5625rem;
+  font-weight: 700;
+  box-shadow: 2px 2px #80808078;
+}
 
-  .div-men {
-    display: flex;
-    grid-area: men;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  .div-accessories {
-    display: flex;
-    grid-area: accessories;
-    align-items: center;
-    justify-content: flex-start;
-    color: red !important;
-  }
-  .div-shoes {
-    display: flex;
-    grid-area: shoes;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  .div-search{
-    display: flex;
-    grid-area: search;
-    align-items: center;
-    justify-content: flex-end;
-  }
+.div-women {
+  display: flex;
+  grid-area: women;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.div-men {
+  display: flex;
+  grid-area: men;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.div-accessories {
+  display: flex;
+  grid-area: accessories;
+  align-items: center;
+  justify-content: flex-start;
+  color: red !important;
+}
+
+.div-shoes {
+  display: flex;
+  grid-area: shoes;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.div-search {
+  display: flex;
+  grid-area: search;
+  align-items: center;
+  justify-content: flex-end;
+}
 
 
-  .div-main {
-    display: grid;
-    grid-area: desktop;
-    grid-template-areas: 'left right';
-    grid-template-columns: 2fr 5fr;
-    grid-template-rows: 4.75rem minmax(0, auto);
-    width: 100%;
-    max-width: 85.75rem;
-    align-items: center;
-    margin: 1px auto;
-    padding: 0 1.5625rem;
-    font-weight: 700;
-  }
-  
-  .div-left {
-    display: flex;
-    grid-area: left;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-    
-  .div-right {
-    display: flex;
-    grid-area: right;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
+.div-main {
+  display: grid;
+  grid-area: desktop;
+  grid-template-areas: 'left right';
+  grid-template-columns: 2fr 5fr;
+  grid-template-rows: 4.75rem minmax(0, auto);
+  width: 100%;
+  max-width: 85.75rem;
+  align-items: center;
+  margin: 1px auto;
+  padding: 0 1.5625rem;
+  font-weight: 700;
+}
 
-  .float-container {
-    border: 3px solid #fff;
-    padding: 20px;
-    display: flex;
+.div-left {
+  display: flex;
+  grid-area: left;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+.div-right {
+  display: flex;
+  grid-area: right;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+.float-container {
+  border: 3px solid #fff;
+  padding: 20px;
+  display: flex;
 }
 
 .float-child-left {
-    width: 30%;
-    float: left;
-    padding: 20px;
-}
-.float-child-right {
-    width: 70%;
-    float: left;
-    padding: 20px;
+  width: 20%;
+  float: left;
+  padding: 20px;
 }
 
-.typography{
-    font-size: 2rem;
-    font-weight: 500;
+.float-child-right {
+  width: 80%;
+  float: left;
+  padding: 20px;
+}
+
+.typography {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.top-head {
+  background: #f8f6f7;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  font-size: 24px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap:wrap;
+  width: 100%;
 }

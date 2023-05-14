@@ -1,5 +1,4 @@
 import { useMutation, useQuery } from '@apollo/client'
-import Header from '../Header/Header'
 import Button from '@mui/material/Button'
 import styles from './ShoppingBag.module.scss'
 import GET_CART from '../../graphql/Queries/Cart'
@@ -162,7 +161,9 @@ export default function ShoppingBag() {
     <div>
       <div className={styles.cart}>
         <div className={styles.cart__heading}>
+          <div className={styles.cart__heading__topHead}>
           <h2>Shopping Bag</h2>
+          </div>
           {loading ? <div className={styles.cart__loader}>Loading....</div> : CartData}
         </div>
       </div>
