@@ -9,7 +9,7 @@ import AppProvider from './providers/AppProvider'
 import ProductDetail from './components/ProductDetail'
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://graphql-poc-tdor.onrender.com/graphql', //http://localhost:4000/graphql'
   cache: new InMemoryCache(),
 })
 
