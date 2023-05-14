@@ -47,7 +47,7 @@ ElevationScroll.propTypes = {
 }
 
 const Header = (props: any) => {
-  const [bagItems, setBagItems] = useState(1)
+  const [bagItems, setBagItems] = useState(0)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const user = JSON.parse(localStorage.getItem('user') || '{}')
