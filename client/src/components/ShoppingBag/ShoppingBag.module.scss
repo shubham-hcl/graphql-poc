@@ -1,13 +1,14 @@
 .cart {
-  padding: 1rem;
+  padding: 50px 50px;
 
   &__heading {
     padding-bottom: 1rem;
+    text-align: center;
   }
 
   &__main {
     padding: 1rem;
-    border: 1px solid #d31334;
+    // border: 1px solid #d31334;
     border-radius: 0.25rem;
     display: flex;
     flex-direction: row;
@@ -18,8 +19,8 @@
     
     &__products {
       flex-grow: 1;
-      border-right: 4px solid #d31334;
-
+      // border-right: 4px solid grey;
+      padding-right: 48px;
       @media (max-width: 767px) {
         border-right: none;
       }
@@ -27,6 +28,7 @@
       &__product {
         display: flex;
         flex-direction: row;
+        align-items: center;
 
         &__image {
           flex-grow: 0;
@@ -80,12 +82,12 @@
     }
 
     &__total_section {
-      padding-left: 1rem;
+      padding: 1rem;
       flex-basis: 20vw;
-      color: #d31334;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      background-color: #f9f9f9;
 
       @media (max-width: 767px) {
         flex-basis: 20vh;
@@ -93,8 +95,6 @@
       }
 
       &__total {
-        display: flex;
-        flex-direction: row;
         &__text {
           flex-grow: 1;
           font-weight: bold;
@@ -111,7 +111,8 @@
     text-align: center;
   }
 
-  &__error {
-    color: red;
+  &__emptyBag {
+    text-align: center;
+    padding: 100px;
   }
 }

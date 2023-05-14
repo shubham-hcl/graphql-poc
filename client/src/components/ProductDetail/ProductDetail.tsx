@@ -17,6 +17,7 @@ import GET_PRODUCT_DETAIL from '../../graphql/Queries/ProductDetail'
 import SliderComponent from '../Slider/Slider'
 
 const ProductDetail = () => {
+  const [buttonText, setButtonText] = useState('Add to bag')
   const navigate = useNavigate()
   const [quantity, setQuantity] = useState(1)
   const params = useParams()
@@ -33,6 +34,7 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = () => {
+    setButtonText('Adding')
     const cartId = localStorage.getItem('cartId') || ''
     const { productId, name, description, price, thumbnail, images } = data.product
     addProductToCart({
@@ -50,7 +52,12 @@ const ProductDetail = () => {
       },
       onCompleted: ({ addProductToCart }) => {
         if (addProductToCart.cartId) localStorage.setItem('cartId', addProductToCart.cartId)
-        navigate('/bag')
+        setButtonText('Added')
+        const event = new MessageEvent('cart', { data: addProductToCart.lineItems });
+				window.dispatchEvent(event);
+        setTimeout(() => {
+          setButtonText('Add to cart')
+        }, 2000)
       },
     })
   }
@@ -109,7 +116,7 @@ const ProductDetail = () => {
             sx={{ mt: 3, mb: 2 }}
             onClick={handleAddToCart}
           >
-            Add to cart
+            {buttonText}
           </Button>
 
           <div className="social-links">

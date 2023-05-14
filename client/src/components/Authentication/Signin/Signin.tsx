@@ -55,7 +55,7 @@ export default function Signin({ onClick }: any) {
   }, [])
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" sx={{ padding: 1}}>
       <CssBaseline />
       <Box
         sx={{

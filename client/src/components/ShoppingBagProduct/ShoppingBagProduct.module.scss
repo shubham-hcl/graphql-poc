@@ -1,16 +1,17 @@
 .products {
-
   &__product {
     padding: 1rem 0;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    border-top: 1px solid #e3e3e3;
 
     &__image {
       flex-grow: 0;
 
       img {
-        width: 10vw;
-        height: 10vw;
+        width: 8vw;
+        height: 8vw;
       }
     }
 

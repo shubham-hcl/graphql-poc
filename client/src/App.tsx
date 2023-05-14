@@ -27,7 +27,7 @@ export default function App() {
                   <Product />
                 </AuthProvider>
               }
-            ></Route>
+            />
             <Route path="login" element={<Authentication />} />
             <Route
               path="bag"

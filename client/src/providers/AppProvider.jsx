@@ -12,7 +12,7 @@ function AppProvider({ children }) {
       <StyledEngineProvider injectFirst>
         <CssBaseline />
         <Header />
-        {children}
+        <div style={{ minHeight: 550 }}>{children}</div>
         <Footer />
       </StyledEngineProvider>
     </ThemeProvider>

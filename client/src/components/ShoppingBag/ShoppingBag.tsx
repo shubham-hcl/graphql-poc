@@ -7,8 +7,11 @@ import ShoppingBagProduct from '../ShoppingBagProduct/ShoppingBagProduct'
 import UPDATE_CART_PRODUCT from '../../graphql/Mutations/UpdateCartProduct'
 import DELETE_CART_PRODUCT from '../../graphql/Mutations/DeleteCartProduct'
 import SliderComponent from '../Slider/Slider'
+import { useNavigate } from 'react-router-dom'
 
 export default function ShoppingBag() {
+  const navigate = useNavigate()
+
   const cartId = localStorage.getItem('cartId') || ''
 
   const { loading, error, data } = useQuery(GET_CART, {
@@ -106,7 +109,11 @@ export default function ShoppingBag() {
     })
   }
 
-  const CartData = data ? (
+  const handleShop = () => {
+    navigate('/products')
+  }
+
+  const CartData = data?.cart?.lineItems?.length ? (
     <div>
       <div className={styles.cart__main}>
         <div className={styles.cart__main__products}>
@@ -120,14 +127,18 @@ export default function ShoppingBag() {
                 updateQuantity={updateQuantity}
                 removeItem={removeItem}
               />
-              {index > 0 && <hr />}
+              {(index === (data.cart.lineItems.length - 1)) && <hr style={{borderWidth: 0.5, color:'#e3e3e"'}} />}
             </>
           ))}
         </div>
         <div className={styles.cart__main__total_section}>
           <div className={styles.cart__main__total_section__total}>
-            <div className={styles.cart__main__total_section__total__text}>Total Amount</div>
-            <div className={styles.cart__main__total_section__total__amount}>
+            <div style={{ borderBottom: '1px solid grey', textAlign: 'left', marginBottom: 20 }}>
+              <h3>Summary:</h3>
+            </div>
+            <div style={{ display: 'flex', textAlign: 'left', justifyContent: 'space-between', marginBottom: 20}}>
+              <div className={styles.cart__main__total_section__total__text}>Total Amount</div>
+              <div className={styles.cart__main__total_section__total__amount}></div>
               {data.cart.totalPrice}
             </div>
           </div>
@@ -139,15 +150,19 @@ export default function ShoppingBag() {
       <SliderComponent />
     </div>
   ) : (
-    <div className={styles.cart__error}>{error?.message}</div>
+    <div className={styles.cart__emptyBag}>
+      <div>Your basket is currently empty.</div>
+      <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }} onClick={handleShop}>
+        Continue to shop
+      </Button>
+    </div>
   )
 
   return (
     <div>
-      <Header />
       <div className={styles.cart}>
         <div className={styles.cart__heading}>
-          <h2>Shopping Cart</h2>
+          <h2>Shopping Bag</h2>
           {loading ? <div className={styles.cart__loader}>Loading....</div> : CartData}
         </div>
       </div>
