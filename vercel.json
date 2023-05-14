@@ -1,11 +1,5 @@
 {
-    "version": 2,
-    "rewrites": [
-        {
-            "src": "/(.*)",
-            "dest": "/"
-        }
-    ],
+    "version": 1,
     "builds": [
         {
             "src": "server/build/server.js",
@@ -15,7 +9,7 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "server/build/server.js"
+            "dest": "/"
         }
     ]
 }
