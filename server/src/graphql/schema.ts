@@ -46,10 +46,10 @@ const schema = `#graphql
     }
     type Cart {
         cartId: ID!,
-        lineItems: [cartItem!]!
+        lineItems: [CartItem!]!
         totalPrice: String!
     }
-    type cartItem {
+    type CartItem {
         productId: ID!,
         name: String!,
         description: String!,
